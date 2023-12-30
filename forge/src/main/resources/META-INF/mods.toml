@@ -1,0 +1,33 @@
+modLoader="javafml"
+loaderVersion="[46,)"
+license="MIT"
+issueTrackerURL="https://marco/Rain should extinguish campfires/issues"
+
+[[mods]]
+modId="rsec"
+version="${version}"
+displayName="Rain should extinguish campfires"
+logoFile="icon.png"
+authors="restonic4"
+description='''
+
+'''
+
+[[dependencies.rsec]]
+   modId="forge"
+   mandatory=true
+   versionRange="[46,)"
+   ordering="NONE"
+   side="BOTH"
+[[dependencies.rsec]]
+   modId="minecraft"
+   mandatory=true
+   versionRange="[1.20]"
+   ordering="NONE"
+   side="BOTH"
+[[dependencies.rsec]]
+   modId="restapi"
+   mandatory=true
+   versionRange="[0.9-1.20-Forge]"
+   ordering="NONE"
+   side="BOTH"

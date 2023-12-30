@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+
+  "quilt_loader": {
+    "group": "${group}",
+    "id": "rsec",
+    "version": "${version}",
+    "metadata": {
+      "name": "Rain should extinguish campfires",
+      "description": "",
+      "contributors": {},
+      "contact": {},
+      "icon": "icon.png"
+    },
+
+    "intermediate_mappings": "net.fabricmc:intermediary",
+    "entrypoints": {
+      "init": [
+        "me.restonic4.rsec.quilt.RainShouldExtinguishCampfiresQuilt"
+      ]
+    },
+    "depends": [
+      {
+        "id": "quilt_loader",
+        "versions": ">=0.18.10"
+      },
+      {
+        "id": "quilted_fabric_api",
+        "versions": ">=4.0.0"
+      },
+      {
+        "id": "minecraft",
+        "versions": "=1.20"
+      },
+      {
+        "id": "architectury",
+        "version": ">=7.1.86"
+      },
+      {
+        "id": "restapi",
+        "version": "=0.9-1.20-Quilt"
+      }
+    ]
+  }
+}
