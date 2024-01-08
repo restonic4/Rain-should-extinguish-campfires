@@ -1,5 +1,6 @@
 package me.restonic4.rsec;
 
+import dev.architectury.platform.Platform;
 import me.restonic4.restapi.RestApi;
 
 public class RainShouldExtinguishCampfires

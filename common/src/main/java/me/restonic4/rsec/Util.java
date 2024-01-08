@@ -6,12 +6,14 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
+import java.util.Random;
+
 public class Util {
     public static boolean isRaining(ServerLevel level) {
         return level.isRaining() || level.isThundering();
     }
 
-    public static boolean isRainingAtBiome(ServerLevel level, BlockPos pos) {
+    public static boolean canRainingAtBiome(ServerLevel level, BlockPos pos) {
         Biome biome = level.getBiome(pos).value();
 
         return biome.hasPrecipitation();
@@ -50,5 +52,19 @@ public class Util {
         }
 
         return isOutside;
+    }
+
+    public static int getRandomInt(int min, int max) {
+        if (min >= max) {
+            throw new IllegalArgumentException("Min value should be smaller than Max value!");
+        }
+
+        Random random = new Random();
+
+        return random.nextInt((max - min) + 1) + min;
+    }
+
+    public static int getTicksForSeconds(int seconds) {
+        return seconds * 20;
     }
 }
