@@ -7,6 +7,10 @@ architectury {
     fabric()
 }
 
+loom {
+    accessWidenerPath = project(":common").loom.accessWidenerPath
+}
+
 version = "${rootProject.mod_version}-${rootProject.minecraft_version}-fabric"
 
 configurations {

@@ -12,13 +12,13 @@
       "contact": {},
       "icon": "icon.png"
     },
-
     "intermediate_mappings": "net.fabricmc:intermediary",
     "entrypoints": {
       "init": [
         "me.restonic4.rsec.quilt.RainShouldExtinguishCampfiresQuilt"
       ]
     },
+    "mixin": "rsec.mixins.json",
     "depends": [
       {
         "id": "quilt_loader",

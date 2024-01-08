@@ -17,6 +17,9 @@
       "me.restonic4.rsec.fabric.RainShouldExtinguishCampfiresFabric"
     ]
   },
+  "mixins": [
+    "rsec.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.14.22",
     "minecraft": "=1.20",
