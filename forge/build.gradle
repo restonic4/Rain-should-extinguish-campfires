@@ -8,6 +8,8 @@ loom {
     forge {
         convertAccessWideners = true
         extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
+
+        mixinConfig "rsec.mixins.json"
     }
 }
 

@@ -21,10 +21,10 @@ public abstract class CampfireBlockEntityMixin {
         if (Util.isRaining(serverLevel) && Util.isRainingAtBiome(serverLevel, blockPos)) {
             boolean isOutside = Util.isOutside(
                     Util.checkRow(serverLevel, blockPos, 64),
-                    Util.checkRow(serverLevel, blockPos, 8),
-                    Util.checkRow(serverLevel, blockPos, 8),
-                    Util.checkRow(serverLevel, blockPos, 8),
-                    Util.checkRow(serverLevel, blockPos, 8)
+                    Util.checkRow(serverLevel, blockPos.offset(1, 0, 0), 8),
+                    Util.checkRow(serverLevel, blockPos.offset(-1, 0, 0), 8),
+                    Util.checkRow(serverLevel, blockPos.offset(0, 0, 1), 8),
+                    Util.checkRow(serverLevel, blockPos.offset(0, 0, -1), 8)
             );
 
             if (isOutside) {
