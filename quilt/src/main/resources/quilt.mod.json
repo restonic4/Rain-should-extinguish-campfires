@@ -31,7 +31,7 @@
       },
       {
         "id": "minecraft",
-        "versions": "=1.20.1"
+        "versions": "=1.19.3"
       },
       {
         "id": "architectury",
@@ -39,7 +39,7 @@
       },
       {
         "id": "restapi",
-        "version": "=0.9-1.20.1-Quilt"
+        "version": "=0.9-1.19.3-Quilt"
       }
     ]
   }
