@@ -35,8 +35,6 @@ dependencies {
         exclude group: "net.fabricmc.fabric-api"
     }
 
-    modImplementation "maven.modrinth:rest-api:${project.rest_api_version}-${project.minecraft_version}-quilt"
-
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionQuilt")) { transitive false }
 }
