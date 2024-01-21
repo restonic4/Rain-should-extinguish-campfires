@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "rsec",
+  "id": "${id}",
   "version": "${version}",
 
-  "name": "Rain should extinguish campfires",
-  "description": "",
-  "authors": [],
+  "name": "${name}",
+  "description": "${description}",
+  "authors": ["${author}"],
   "contact": {},
 
-  "license": "MIT",
+  "license": "${license}",
   "icon": "icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "me.restonic4.rsec.fabric.RainShouldExtinguishCampfiresFabric"
+      "${fabric_main}"
     ]
   },
   "mixins": [
     "rsec.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.14.22",
-    "minecraft": "=1.19.3",
-    "architectury": ">=7.1.86",
-    "restapi": "=0.9-1.19.3-Fabric"
+    "fabricloader": ">=${fabric_loader_version}",
+    "minecraft": "=${minecraft_version}",
+    "architectury": ">=${architectury_version}",
+    "restapi": ">=${rest_api_version}-${minecraft_version}-fabric"
   }
 }

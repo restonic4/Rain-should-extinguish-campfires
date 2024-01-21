@@ -5,41 +5,44 @@
   ],
   "quilt_loader": {
     "group": "${group}",
-    "id": "rsec",
+    "id": "${id}",
     "version": "${version}",
     "metadata": {
-      "name": "Rain should extinguish campfires",
-      "description": "",
-      "contributors": {},
+      "name": "${name}",
+      "description": "${description}",
+      "contributors": {
+        "${author}": "Owner"
+      },
       "contact": {},
       "icon": "icon.png"
     },
+
     "intermediate_mappings": "net.fabricmc:intermediary",
     "entrypoints": {
       "init": [
-        "me.restonic4.rsec.quilt.RainShouldExtinguishCampfiresQuilt"
+        "${quilt_main}"
       ]
     },
     "depends": [
       {
         "id": "quilt_loader",
-        "versions": ">=0.18.10"
+        "versions": ">=${quilt_loader_version}"
       },
       {
         "id": "quilted_fabric_api",
-        "versions": ">=4.0.0"
+        "versions": ">=${quilt_fabric_api_version}"
       },
       {
         "id": "minecraft",
-        "versions": "=1.19.3"
+        "versions": "=${minecraft_version}"
       },
       {
         "id": "architectury",
-        "version": ">=7.1.86"
+        "version": ">=${architectury_version}"
       },
       {
         "id": "restapi",
-        "version": "=0.9-1.19.3-Quilt"
+        "version": ">=${rest_api_version}-${minecraft_version}-quilt"
       }
     ]
   }

@@ -1,68 +1,66 @@
 plugins {
-    id "com.github.johnrengelman.shadow" version "7.1.2"
+    id "com.github.johnrengelman.shadow" version "8.1.1"
 }
 
 architectury {
     platformSetupLoomIde()
-    fabric()
+    neoForge()
 }
+
 
 loom {
     accessWidenerPath = project(":common").loom.accessWidenerPath
 }
 
-version = "${rootProject.mod_version}-${rootProject.minecraft_version}-fabric"
+version = "${rootProject.mod_version}-${rootProject.minecraft_version}-neoforge"
 
 configurations {
     common
     shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
-    developmentFabric.extendsFrom common
+    developmentNeoForge.extendsFrom common
 }
 
 dependencies {
-    implementation 'org.jetbrains:annotations:24.0.0'
-    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
-    modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
+    neoForge "net.neoforged:neoforge:${rootProject.neoforge_version}"
     // Remove the next line if you don't want to depend on the API
-    modApi "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
-
-    modImplementation "maven.modrinth:rest-api:${project.rest_api_version}-${project.minecraft_version}-fabric"
+    modApi "dev.architectury:architectury-neoforge:${rootProject.architectury_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
 }
 
 processResources {
     inputs.property "version", project.version
     inputs.property "minecraft_version", rootProject.minecraft_version
-    inputs.property "fabric_loader_version", rootProject.fabric_loader_version
+    inputs.property "neoforge_version", rootProject.neoforge_version
     inputs.property "architectury_version", rootProject.architectury_version
     inputs.property "name", rootProject.name
     inputs.property "id", rootProject.id
     inputs.property "description", rootProject.description
     inputs.property "author", rootProject.author
     inputs.property "license", rootProject.license
-    inputs.property "fabric_main", rootProject.fabric_main
     inputs.property "rest_api_version", rootProject.rest_api_version
 
-    filesMatching("fabric.mod.json") {
+    filesMatching("META-INF/mods.toml") {
         expand "version": project.version,
                 "minecraft_version": rootProject.minecraft_version,
-                "fabric_loader_version": rootProject.fabric_loader_version,
+                "neoforge_version": rootProject.neoforge_version,
                 "architectury_version": rootProject.architectury_version,
                 "name": rootProject.name,
                 "id": rootProject.id,
                 "description": rootProject.description,
                 "author": rootProject.author,
                 "license": rootProject.license,
-                "fabric_main": rootProject.fabric_main,
                 "rest_api_version": rootProject.rest_api_version
     }
 }
 
 shadowJar {
+    exclude "fabric.mod.json"
+    exclude "architectury.common.json"
+
     configurations = [project.configurations.shadowCommon]
     archiveClassifier.set("dev-shadow")
 }
@@ -89,16 +87,6 @@ components.java {
     }
 }
 
-publishing {
-    publications {
-        mavenFabric(MavenPublication) {
-            artifactId = rootProject.archives_base_name + "-" + project.name
-            from components.java
-        }
-    }
-
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-    repositories {
-        // Add repositories to publish to here.
-    }
+repositories {
+    maven { url "https://maven.neoforged.net/releases" }
 }

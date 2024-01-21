@@ -1,33 +1,40 @@
 modLoader="javafml"
-loaderVersion="[44,)"
-license="MIT"
-issueTrackerURL="https://marco/Rain should extinguish campfires/issues"
+loaderVersion="[${forge_mayor_version},)"
+license="${license}"
 
 [[mods]]
-modId="rsec"
+
+modId="${id}"
 version="${version}"
-displayName="Rain should extinguish campfires"
+displayName="${name}"
 logoFile="icon.png"
-authors="restonic4"
-description='''
+description="${description}"
+authors = "${author}"
 
-'''
+[[dependencies.${id}]]
+modId="forge"
+mandatory=true
+versionRange="[${forge_mayor_version},)"
+ordering="NONE"
+side="BOTH"
 
-[[dependencies.rsec]]
-   modId="forge"
-   mandatory=true
-   versionRange="[44,)"
-   ordering="NONE"
-   side="BOTH"
-[[dependencies.rsec]]
-   modId="minecraft"
-   mandatory=true
-   versionRange="[1.19.3]"
-   ordering="NONE"
-   side="BOTH"
-[[dependencies.rsec]]
-   modId="restapi"
-   mandatory=true
-   versionRange="[0.9-1.19.3-Forge]"
-   ordering="NONE"
-   side="BOTH"
+[[dependencies.${id}]]
+modId="minecraft"
+mandatory=true
+versionRange="[${minecraft_version}]"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${id}]]
+modId="architectury"
+mandatory=true
+versionRange="[${architectury_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${id}]]
+modId="restapi"
+mandatory=true
+versionRange="[${rest_api_version}-${minecraft_version}-forge,)"
+ordering="NONE"
+side="BOTH"

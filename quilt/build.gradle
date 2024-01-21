@@ -44,10 +44,32 @@ dependencies {
 processResources {
     inputs.property "group", rootProject.maven_group
     inputs.property "version", project.version
+    inputs.property "minecraft_version", rootProject.minecraft_version
+    inputs.property "quilt_loader_version", rootProject.quilt_loader_version
+    inputs.property "quilt_fabric_api_version", rootProject.quilt_fabric_api_version
+    inputs.property "architectury_version", rootProject.architectury_version
+    inputs.property "name", rootProject.name
+    inputs.property "id", rootProject.id
+    inputs.property "description", rootProject.description
+    inputs.property "author", rootProject.author
+    inputs.property "license", rootProject.license
+    inputs.property "quilt_main", rootProject.quilt_main
+    inputs.property "rest_api_version", rootProject.rest_api_version
 
     filesMatching("quilt.mod.json") {
         expand "group": rootProject.maven_group,
-                "version": project.version
+                "version": project.version,
+                "minecraft_version": rootProject.minecraft_version,
+                "quilt_loader_version": rootProject.quilt_loader_version,
+                "quilt_fabric_api_version": rootProject.quilt_fabric_api_version,
+                "architectury_version": rootProject.architectury_version,
+                "name": rootProject.name,
+                "id": rootProject.id,
+                "description": rootProject.description,
+                "author": rootProject.author,
+                "license": rootProject.license,
+                "quilt_main": rootProject.quilt_main,
+                "rest_api_version": rootProject.rest_api_version
     }
 }
 

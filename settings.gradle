@@ -3,12 +3,32 @@ pluginManagement {
         maven { url "https://maven.fabricmc.net/" }
         maven { url "https://maven.architectury.dev/" }
         maven { url "https://maven.minecraftforge.net/" }
+        maven { url "https://maven.neoforged.net/releases" }
         mavenCentral()
         gradlePluginPortal()
     }
 }
 
+def propertiesFile = new File(rootProject.projectDir, 'gradle.properties')
+def properties = new Properties()
+properties.load(propertiesFile.newDataInputStream())
+
+def enabledPlatforms = properties.getProperty('enabled_platforms', '').split(',')
+
 include("common")
-include("fabric")
-include("forge")
-include("quilt")
+
+if (enabledPlatforms.contains('forge')) {
+    include("forge")
+}
+
+if (enabledPlatforms.contains('fabric')) {
+    include("fabric")
+}
+
+if (enabledPlatforms.contains('quilt')) {
+    include("quilt")
+}
+
+if (enabledPlatforms.contains('neoforge')) {
+    include("neoforge")
+}
