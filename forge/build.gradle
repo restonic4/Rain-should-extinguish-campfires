@@ -34,8 +34,6 @@ dependencies {
     // Remove the next line if you don't want to depend on the API
     modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
 
-    modImplementation "maven.modrinth:rest-api:${project.rest_api_version}-${project.minecraft_version}-forge"
-
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 }
@@ -50,7 +48,6 @@ processResources {
     inputs.property "description", rootProject.description
     inputs.property "author", rootProject.author
     inputs.property "license", rootProject.license
-    inputs.property "rest_api_version", rootProject.rest_api_version
 
     filesMatching("META-INF/mods.toml") {
         expand "version": project.version,
@@ -61,8 +58,7 @@ processResources {
                 "id": rootProject.id,
                 "description": rootProject.description,
                 "author": rootProject.author,
-                "license": rootProject.license,
-                "rest_api_version": rootProject.rest_api_version
+                "license": rootProject.license
     }
 }
 

@@ -35,8 +35,6 @@ dependencies {
         exclude group: "net.fabricmc.fabric-api"
     }
 
-    modImplementation "maven.modrinth:rest-api:${project.rest_api_version}-${project.minecraft_version}-quilt"
-
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionQuilt")) { transitive false }
 }
@@ -54,7 +52,6 @@ processResources {
     inputs.property "author", rootProject.author
     inputs.property "license", rootProject.license
     inputs.property "quilt_main", rootProject.quilt_main
-    inputs.property "rest_api_version", rootProject.rest_api_version
 
     filesMatching("quilt.mod.json") {
         expand "group": rootProject.maven_group,
@@ -68,8 +65,7 @@ processResources {
                 "description": rootProject.description,
                 "author": rootProject.author,
                 "license": rootProject.license,
-                "quilt_main": rootProject.quilt_main,
-                "rest_api_version": rootProject.rest_api_version
+                "quilt_main": rootProject.quilt_main
     }
 }
 

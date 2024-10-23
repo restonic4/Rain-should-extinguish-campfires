@@ -28,8 +28,6 @@ dependencies {
     // Remove the next line if you don't want to depend on the API
     modApi "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
 
-    modImplementation "maven.modrinth:rest-api:${project.rest_api_version}-${project.minecraft_version}-fabric"
-
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 }
@@ -45,7 +43,6 @@ processResources {
     inputs.property "author", rootProject.author
     inputs.property "license", rootProject.license
     inputs.property "fabric_main", rootProject.fabric_main
-    inputs.property "rest_api_version", rootProject.rest_api_version
 
     filesMatching("fabric.mod.json") {
         expand "version": project.version,
@@ -57,8 +54,7 @@ processResources {
                 "description": rootProject.description,
                 "author": rootProject.author,
                 "license": rootProject.license,
-                "fabric_main": rootProject.fabric_main,
-                "rest_api_version": rootProject.rest_api_version
+                "fabric_main": rootProject.fabric_main
     }
 }
 

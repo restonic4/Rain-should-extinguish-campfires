@@ -41,7 +41,6 @@ processResources {
     inputs.property "description", rootProject.description
     inputs.property "author", rootProject.author
     inputs.property "license", rootProject.license
-    inputs.property "rest_api_version", rootProject.rest_api_version
 
     filesMatching("META-INF/mods.toml") {
         expand "version": project.version,
@@ -52,8 +51,7 @@ processResources {
                 "id": rootProject.id,
                 "description": rootProject.description,
                 "author": rootProject.author,
-                "license": rootProject.license,
-                "rest_api_version": rootProject.rest_api_version
+                "license": rootProject.license
     }
 }
 
