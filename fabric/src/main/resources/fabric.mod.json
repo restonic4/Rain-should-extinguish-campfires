@@ -16,7 +16,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "me.restonic4.multiloadertest.Multiloadertest"
+      "com.restonic4.rsec.RSECFabric"
     ]
   },
   "mixins": [
