@@ -11,6 +11,14 @@ mixin {
     config("${mod_id}.forge.mixins.json")
 }
 
+jar {
+    manifest {
+        attributes([
+                'MixinConfigs': "${mod_id}.mixins.json,${mod_id}.forge.mixins.json",
+        ])
+    }
+}
+
 minecraft {
     mappings channel: 'official', version: minecraft_version
 
@@ -32,6 +40,7 @@ minecraft {
             workingDirectory file('runs/client')
             ideaModule "${rootProject.name}.${project.name}.main"
             taskName 'Client'
+            args "--mixin.config=${mod_id}.mixins.json"
             mods {
                 modClientRun {
                     source sourceSets.main
@@ -43,6 +52,7 @@ minecraft {
             workingDirectory file('runs/server')
             ideaModule "${rootProject.name}.${project.name}.main"
             taskName 'Server'
+            args "--mixin.config=${mod_id}.mixins.json"
             mods {
                 modServerRun {
                     source sourceSets.main
