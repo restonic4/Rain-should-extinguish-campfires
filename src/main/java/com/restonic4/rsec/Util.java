@@ -14,7 +14,7 @@ public class Util {
     }
 
     public static boolean canRainingAtBiome(ServerLevel level, BlockPos pos) {
-        Biome biome = level.getBiome(pos).value();
+        Biome biome = level.getBiome(pos);
 
         return (biome.getPrecipitation() != Biome.Precipitation.NONE);
     }
