@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "rsec",
+  "version": "${version}",
+  "name": "RainCampfiresFabric",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/marco/RainCampfiresFabric"
+  },
+  "license": "MIT",
+  "icon": "assets/rsec/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+    ],
+    "main": [
+      "com.restonic4.rsec.RainCampfiresFabric"
+    ]
+  },
+  "mixins": [
+    "rsec.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
