@@ -37,15 +37,14 @@ processResources {
     }
 }
 
-def targetJavaVersion = 16
+def targetJavaVersion = 8
 tasks.withType(JavaCompile).configureEach {
     it.options.encoding = "UTF-8"
-    it.options.release.set(targetJavaVersion)
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
 }
 
 java {
-    toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
-
     withSourcesJar()
 }
 

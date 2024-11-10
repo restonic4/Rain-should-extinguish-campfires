@@ -16,8 +16,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class CampfireBlockEntityMixin {
     private static int tickCountdown = 0;
 
-    @Inject(method = "cookTick", at = @At("TAIL"))
-    private static void cookTick(Level level, BlockPos blockPos, BlockState blockState, CampfireBlockEntity campfireBlockEntity, CallbackInfo ci) {
+    @Inject(method = "tick", at = @At("TAIL"))
+    private void cookTick(CallbackInfo ci) {
+        CampfireBlockEntity current = (CampfireBlockEntity) (Object) this;
+
+        Level level = current.getLevel();
+        BlockPos blockPos = current.getBlockPos();
+        BlockState blockState = current.getBlockState();
+
         ServerLevel serverLevel = (ServerLevel) level;
 
         if (Util.isRaining(serverLevel) && Util.canRainingAtBiome(serverLevel, blockPos)) {
@@ -33,7 +39,7 @@ public abstract class CampfireBlockEntityMixin {
                 );
 
                 if (isOutside) {
-                    CampfireBlock.dowse(null, level, blockPos, blockState);
+                    CampfireBlock.dowse(level, blockPos, blockState);
                     BlockState newState = blockState.setValue(CampfireBlock.LIT, false);
                     level.setBlock(blockPos, newState, 11);
                 }
