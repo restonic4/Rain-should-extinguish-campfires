@@ -10,7 +10,6 @@ public class RainCampfiresFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info("----- Rain should extinguish campfires --- 1.19.2 --- Cant use RestApi -----");
         LOGGER.info("Did you know that rain should extinguish campfires?");
         LOGGER.info("Yeah, this mod fixes that. With one simple mixin, that's cool.");
     }
