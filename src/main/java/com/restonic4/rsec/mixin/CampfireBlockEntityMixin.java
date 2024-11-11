@@ -39,7 +39,7 @@ public abstract class CampfireBlockEntityMixin {
                 );
 
                 if (isOutside) {
-                    CampfireBlock.dowse(level, blockPos, blockState);
+                    current.dowse();
                     BlockState newState = blockState.setValue(CampfireBlock.LIT, false);
                     level.setBlock(blockPos, newState, 11);
                 }
