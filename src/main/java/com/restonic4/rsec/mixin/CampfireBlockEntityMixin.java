@@ -3,6 +3,9 @@ package com.restonic4.rsec.mixin;
 import com.restonic4.rsec.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.item.crafting.CampfireCookingRecipe;
+import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.entity.CampfireBlockEntity;
@@ -17,9 +20,7 @@ public abstract class CampfireBlockEntityMixin {
     private static int tickCountdown = 0;
 
     @Inject(method = "cookTick", at = @At("TAIL"))
-    private static void cookTick(Level level, BlockPos blockPos, BlockState blockState, CampfireBlockEntity campfireBlockEntity, CallbackInfo ci) {
-        ServerLevel serverLevel = (ServerLevel) level;
-
+    private static void cookTick(ServerLevel serverLevel, BlockPos blockPos, BlockState blockState, CampfireBlockEntity campfireBlockEntity, RecipeManager.CachedCheck<SingleRecipeInput, CampfireCookingRecipe> cachedCheck, CallbackInfo ci) {
         if (Util.isRaining(serverLevel) && Util.canRainingAtBiome(serverLevel, blockPos)) {
             if (tickCountdown <= 0) {
                 tickCountdown = Util.getRandomInt(Util.getTicksForSeconds(2), Util.getTicksForSeconds(6));
@@ -33,9 +34,9 @@ public abstract class CampfireBlockEntityMixin {
                 );
 
                 if (isOutside) {
-                    CampfireBlock.dowse(null, level, blockPos, blockState);
+                    CampfireBlock.dowse(null, serverLevel, blockPos, blockState);
                     BlockState newState = blockState.setValue(CampfireBlock.LIT, false);
-                    level.setBlock(blockPos, newState, 11);
+                    serverLevel.setBlock(blockPos, newState, 11);
                 }
             }
 
