@@ -69,9 +69,4 @@ fabric_loader_version=0.16.10
 # Forge
 forge_version=47.4.0
 forge_loader_version_range=[47,)
-
-# NeoForge
-neoforge_version=21.0.167
-neoforge_loader_version_range=[4,)
-neo_form_version=1.20.2-20241215.201144
 ```

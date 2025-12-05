@@ -1,18 +1,48 @@
 plugins {
     id 'multiloader-common'
-    id 'net.neoforged.moddev'
 }
 
-neoForge {
-    neoFormVersion = neo_form_version
-    // Automatically enable AccessTransformers if the file exists
-    def at = file('src/main/resources/META-INF/accesstransformer.cfg')
-    if (at.exists()) {
-        accessTransformers.from(at.absolutePath)
+def mcVersion = project.property('minecraft_version')
+def cmp = compareVersions(mcVersion, '1.20.2')
+
+// Conditional plugin application
+if (cmp < 0) {
+    // < 1.20.2 -> legacyforge + sponge
+    apply plugin: 'net.neoforged.moddev.legacyforge'
+    apply plugin: 'org.spongepowered.gradle.vanilla'
+
+    logger.lifecycle("Applying legacy Neoforge + Sponge for Minecraft $mcVersion")
+
+} else {
+    // >= 1.20.2 -> new neoforge moddev only
+    apply plugin: 'net.neoforged.moddev'
+
+    logger.lifecycle("Applying Neoforge moddev for Minecraft $mcVersion")
+}
+
+// Conditional forge or neoforge blocks
+if (cmp < 0) {
+    minecraft {
+        version(minecraft_version)
+        def aw = file("src/main/resources/${mod_id}.accesswidener")
+        if (aw.exists()) {
+            accessWideners(aw)
+        }
     }
-    parchment {
-        minecraftVersion = parchment_minecraft
-        mappingsVersion = parchment_version
+}
+
+if (cmp >= 0) {
+    neoForge {
+        neoFormVersion = neo_form_version
+        // Automatically enable AccessTransformers if the file exists
+        def at = file('src/main/resources/META-INF/accesstransformer.cfg')
+        if (at.exists()) {
+            accessTransformers.from(at.absolutePath)
+        }
+        parchment {
+            minecraftVersion = parchment_minecraft
+            mappingsVersion = parchment_version
+        }
     }
 }
 
