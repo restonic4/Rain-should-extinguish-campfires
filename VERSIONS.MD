@@ -5,7 +5,7 @@ minecraft_version=1.21.1
 java_version=21
 mixin_java_version=JAVA_21
 minecraft_version_range=[1.21.1]
-platforms=fabric,neoforge
+platforms=fabric,forge,neoforge
 
 # Mappings
 parchment_minecraft=1.21.1
@@ -14,6 +14,10 @@ parchment_version=2024.11.17
 # Fabric
 fabric_version=0.116.7+1.21.1
 fabric_loader_version=0.15.11
+
+# Forge
+forge_version=52.1.0
+forge_loader_version_range=[52,)
 
 # NeoForge
 neoforge_version=21.1.214
@@ -28,7 +32,7 @@ minecraft_version=1.21
 java_version=21
 mixin_java_version=JAVA_21
 minecraft_version_range=[1.21]
-platforms=fabric,neoforge
+platforms=fabric,forge,neoforge
 
 # Mappings
 parchment_minecraft=1.21
@@ -37,6 +41,10 @@ parchment_version=2024.06.23
 # Fabric
 fabric_version=0.100.1+1.21
 fabric_loader_version=0.16.10
+
+# Forge
+forge_version=51.0.33
+forge_loader_version_range=[51,)
 
 # NeoForge
 neoforge_version=21.0.167
