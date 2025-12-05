@@ -104,7 +104,8 @@ processResources {
             'forge_version'                : safeProp('forge_version'),
             'forge_loader_version_range'   : safeProp('forge_loader_version_range'),
             'credits'                      : credits,
-            'java_version'                 : java_version
+            'java_version'                 : java_version,
+            'mixin_java_version'           : mixin_java_version
     ]
 
     // Remove completely missing entries so expansion does not add null strings

@@ -3,6 +3,7 @@
 # Minecraft
 minecraft_version=1.21.1
 java_version=21
+mixin_java_version=JAVA_21
 minecraft_version_range=[1.21.1]
 platforms=fabric,neoforge
 
@@ -25,6 +26,7 @@ neo_form_version=1.21.1-20240808.144430
 # Minecraft
 minecraft_version=1.21
 java_version=21
+mixin_java_version=JAVA_21
 minecraft_version_range=[1.21]
 platforms=fabric,neoforge
 
@@ -47,6 +49,7 @@ neo_form_version=1.21-20240613.152323
 # Minecraft
 minecraft_version=1.20.1
 java_version=17
+mixin_java_version=JAVA_17
 minecraft_version_range=[1.20.1]
 platforms=fabric,forge
 
