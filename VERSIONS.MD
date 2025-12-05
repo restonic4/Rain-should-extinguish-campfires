@@ -14,10 +14,6 @@ parchment_version=2024.11.17
 fabric_version=0.116.7+1.21.1
 fabric_loader_version=0.15.11
 
-# Forge
-forge_version=51.0.33
-forge_loader_version_range=[51,)
-
 # NeoForge
 neoforge_version=21.1.214
 neoforge_loader_version_range=[4,)
@@ -39,10 +35,6 @@ parchment_version=2024.06.23
 # Fabric
 fabric_version=0.100.1+1.21
 fabric_loader_version=0.16.10
-
-# Forge
-forge_version=51.0.33
-forge_loader_version_range=[51,)
 
 # NeoForge
 neoforge_version=21.0.167

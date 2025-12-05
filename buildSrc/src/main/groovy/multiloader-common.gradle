@@ -83,28 +83,35 @@ jar {
 }
 
 processResources {
-    var expandProps = [
+    def safeProp = { name ->
+        project.hasProperty(name) ? project.property(name) : null
+    }
+
+    def expandProps = [
             'version'                      : version,
-            'group'                        : project.group, //Else we target the task's group.
+            'group'                        : project.group,
             'minecraft_version'            : minecraft_version,
             'minecraft_version_range'      : minecraft_version_range,
-            'fabric_version'               : fabric_version,
-            'fabric_loader_version'        : fabric_loader_version,
+            'fabric_version'               : safeProp('fabric_version'),
+            'fabric_loader_version'        : safeProp('fabric_loader_version'),
             'mod_name'                     : mod_name,
             'mod_author'                   : mod_author,
             'mod_id'                       : mod_id,
             'license'                      : license,
             'description'                  : project.description,
-            'neoforge_version'             : neoforge_version,
-            'neoforge_loader_version_range': neoforge_loader_version_range,
-            "forge_version": forge_version,
-            "forge_loader_version_range": forge_loader_version_range,
+            'neoforge_version'             : safeProp('neoforge_version'),
+            'neoforge_loader_version_range': safeProp('neoforge_loader_version_range'),
+            'forge_version'                : safeProp('forge_version'),
+            'forge_loader_version_range'   : safeProp('forge_loader_version_range'),
             'credits'                      : credits,
             'java_version'                 : java_version
     ]
 
-    var jsonExpandProps = expandProps.collectEntries {
-        key, value -> [(key): value instanceof String ? value.replace("\n", "\\\\n") : value]
+    // Remove completely missing entries so expansion does not add null strings
+    expandProps = expandProps.findAll { k, v -> v != null }
+
+    def jsonExpandProps = expandProps.collectEntries { key, value ->
+        [(key): value instanceof String ? value.replace("\n", "\\\\n") : value]
     }
 
     filesMatching(['META-INF/mods.toml', 'META-INF/neoforge.mods.toml']) {
