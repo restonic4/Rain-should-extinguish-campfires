@@ -1,5 +1,6 @@
 package com.example.my_mod.platform;
 
+import com.example.my_mod.Constants;
 import com.example.my_mod.platform.services.IPlatformHelper;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
@@ -21,6 +22,14 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
     @Override
     public boolean isDevelopmentEnvironment() {
 
-        return !FMLLoader.getCurrent().isProduction();
+        return !FMLLoader.isProduction();
+    }
+
+    @Override
+    public String getModVersion() {
+        return ModList.get()
+                .getModContainerById(Constants.MOD_ID)
+                .map(container -> container.getModInfo().getVersion().toString())
+                .orElse("UNKNOWN");
     }
 }
