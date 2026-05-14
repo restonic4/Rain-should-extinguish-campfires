@@ -27,5 +27,11 @@ public class CommonClass {
 
             Constants.LOG.info("Hello to examplemod");
         }
+
+        //CC (minecraft == 1.20.1)
+        Constants.LOG.info("We are on 1.20.1! And CC knows!");
+
+        //CC (minecraft == 1.21)
+        Constants.LOG.info("We are on 1.21! And CC knows!");
     }
 }
