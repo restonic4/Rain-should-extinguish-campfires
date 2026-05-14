@@ -1,5 +1,7 @@
 package com.example.my_mod.platform.services;
 
+import java.util.Objects;
+
 public interface IPlatformHelper {
 
     /**
@@ -8,6 +10,16 @@ public interface IPlatformHelper {
      * @return The name of the current platform.
      */
     String getPlatformName();
+
+    default boolean isFabric() {
+        return Objects.equals(getPlatformName(), "Fabric");
+    }
+    default boolean isForge() {
+        return Objects.equals(getPlatformName(), "Forge");
+    }
+    default boolean isNeoForge() {
+        return Objects.equals(getPlatformName(), "NeoForge");
+    }
 
     /**
      * Checks if a mod with the given id is loaded.
@@ -30,7 +42,6 @@ public interface IPlatformHelper {
      * @return The name of the environment type.
      */
     default String getEnvironmentName() {
-
         return isDevelopmentEnvironment() ? "development" : "production";
     }
 
