@@ -34,3 +34,8 @@ side = "BOTH"
 # stop your mod loading on the server for example.
 #[features.${mod_id}]
 #openGLVersion="[3.2,)"
+["lithium:options"]
+"mixin.world.block_entity_ticking.sleeping.campfire" = false
+"mixin.world.block_entity_ticking.sleeping.campfire.lit" = false
+"mixin.world.block_entity_ticking.sleeping.campfire.unlit" = false
+"mixin.alloc.chunk_random" = false

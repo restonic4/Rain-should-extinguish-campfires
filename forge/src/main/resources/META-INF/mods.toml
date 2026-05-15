@@ -25,3 +25,9 @@ mandatory = true
 versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
+
+["lithium:options"]
+"mixin.world.block_entity_ticking.sleeping.campfire" = false
+"mixin.world.block_entity_ticking.sleeping.campfire.lit" = false
+"mixin.world.block_entity_ticking.sleeping.campfire.unlit" = false
+"mixin.alloc.chunk_random" = false
