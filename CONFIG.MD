@@ -110,8 +110,8 @@ Out of all the surrounding columns checked (based on the radius above), how many
 
 ```json
 {
-  "rainLookupMinTickRange": 40,
-  "rainLookupMaxTickRange": 120,
+  "rainLookupMinTickRange": 120,
+  "rainLookupMaxTickRange": 1200,
   "requirePrecipitationBiome": true,
   "detectionMode": "RAYCAST",
   "skyLightThreshold": 15,
